@@ -4,8 +4,8 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
 
-import LoginImg from '../../assets/login-image.svg'
 import Logo from '../../assets/logo.svg'
+import RegisterImg from '../../assets/register-image.svg'
 import Button from '../../components/Button'
 import { apiCodeBurger } from '../../services/api'
 import {
@@ -45,7 +45,7 @@ const Login = () => {
 
   return (
     <Container>
-      <LoginImage alt="image" src={LoginImg} />
+      <LoginImage alt="image" src={RegisterImg} />
       <ContainerItems>
         <form noValidate onSubmit={handleSubmit(onSubmit)}>
           <img src={Logo} alt="logo" />
