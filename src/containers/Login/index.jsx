@@ -1,5 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -82,7 +83,10 @@ const Login = () => {
             Login
           </Button>
           <SignInLink>
-            Nao possui conta? <a>Sign up</a>
+            Nao possui conta?{' '}
+            <Link to="/cadastro" style={{ color: 'white' }}>
+              Sign up
+            </Link>
           </SignInLink>
         </form>
       </ContainerItems>

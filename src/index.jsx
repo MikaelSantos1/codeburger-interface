@@ -2,14 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { ToastContainer } from 'react-toastify'
 
-import Login from './containers/Login/index'
-import Register from './containers/Register'
 import { UserProvider } from './hooks/UserContext'
+import Routes from './routes/routes'
 import GlobalStyles from './styles/globalStyles'
 ReactDOM.render(
   <>
     <UserProvider>
-      <Login />
+      <Routes />
     </UserProvider>
     <ToastContainer theme="colored" />
     <GlobalStyles />,
