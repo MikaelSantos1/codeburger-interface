@@ -1,5 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
@@ -7,6 +8,7 @@ import * as Yup from 'yup'
 import LoginImg from '../../assets/login-image.svg'
 import Logo from '../../assets/logo.svg'
 import Button from '../../components/Button'
+import { useUser } from '../../hooks/UserContext'
 import { apiCodeBurger } from '../../services/api'
 import {
   Container,
@@ -19,6 +21,8 @@ import {
 } from './styles'
 
 const Login = () => {
+  const { putUserData } = useUser()
+  console.log()
   const schema = Yup.object().shape({
     email: Yup.string()
       .email('Digite um email valido')
@@ -36,11 +40,18 @@ const Login = () => {
     resolver: yupResolver(schema)
   })
   const onSubmit = async clientData => {
-    const response = await apiCodeBurger.post('sessions', {
-      email: clientData.email,
-      password: clientData.password
-    })
-    console.log(response)
+    const { data } = await toast.promise(
+      apiCodeBurger.post('sessions', {
+        email: clientData.email,
+        password: clientData.password
+      }),
+      {
+        pending: 'Verificando seus dados',
+        success: 'Seja bem vindo(a)👌',
+        error: 'Verfique seu email e senha🤯'
+      }
+    )
+    putUserData(data)
   }
 
   return (

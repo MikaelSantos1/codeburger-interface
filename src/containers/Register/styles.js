@@ -17,7 +17,7 @@ export const Container = styled.div`
   }
 `
 
-export const LoginImage = styled.img`
+export const RegisterImage = styled.img`
   height: 70%;
 `
 
@@ -37,6 +37,7 @@ export const ContainerItems = styled.div`
     line-height: 28px;
     color: #ffffff;
     text-align: center;
+    margin-top: 10px;
   }
 `
 
@@ -47,7 +48,7 @@ export const Label = styled.p`
   font-size: 12px;
   line-height: 14px;
   color: #ffffff;
-  margin-top: 28px;
+  margin-top: ${props => (props.error ? '10px' : '28px')};
   margin-bottom: 5px;
 `
 

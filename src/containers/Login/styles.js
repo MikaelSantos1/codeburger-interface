@@ -37,6 +37,7 @@ export const ContainerItems = styled.div`
     line-height: 28px;
     color: #ffffff;
     text-align: center;
+    margin-top: 120px;
   }
 `
 
