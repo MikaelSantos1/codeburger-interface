@@ -1,6 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -10,7 +10,7 @@ import LoginImg from '../../assets/login-image.svg'
 import Logo from '../../assets/logo.svg'
 import Button from '../../components/Button'
 import { useUser } from '../../hooks/UserContext'
-import { apiCodeBurger } from '../../services/api'
+import api from '../../services/api'
 import {
   Container,
   LoginImage,
@@ -22,6 +22,7 @@ import {
 } from './styles'
 
 const Login = () => {
+  const history = useHistory()
   const { putUserData } = useUser()
   console.log()
   const schema = Yup.object().shape({
@@ -42,7 +43,7 @@ const Login = () => {
   })
   const onSubmit = async clientData => {
     const { data } = await toast.promise(
-      apiCodeBurger.post('sessions', {
+      api.post('sessions', {
         email: clientData.email,
         password: clientData.password
       }),
@@ -53,6 +54,9 @@ const Login = () => {
       }
     )
     putUserData(data)
+    setTimeout(() => {
+      history.push('/')
+    }, 1000)
   }
 
   return (
